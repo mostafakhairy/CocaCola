@@ -1,0 +1,179 @@
+<div class="container py-3">
+  <div class="row">
+    <!-- <div *ngIf="commonService.error" class="invalidFeedback mb-3">
+      {{ commonService.message }}
+    </div>
+    <div *ngIf="commonService.success" class="validFeedback mb-3">
+      {{ commonService.message }}
+    </div> -->
+    <div class="col-12">
+      <div class="text-center">
+        <div class="easy-pie-chart">
+          <easy-pie-chart class="chart" [percent]="percent" [options]="options">
+          </easy-pie-chart>
+          <div class="chart-text">
+            <p class="num">{{ userBettingCoins }}</p>
+            <p class="num-grey">
+              {{ "app.outOf" | translate }} {{ this.commonService.coins }}
+            </p>
+          </div>
+        </div>
+        <h2 class="heading-text">
+          {{ "app.remainingPredictionsPoints" | translate }}
+        </h2>
+      </div>
+      <div class="drink-and-win">
+        <p class="px-2rem" translate>
+          {{ "app.Predictthematchscoreandearnyourcoins" | translate }}
+          <span class="font-sm d-block">
+            {{ "app.predictClosing" | translate }}
+          </span>
+        </p>
+      </div>
+    </div>
+    <div class="col-12">
+      <p class="prediction-date">
+        <span class="text-primary d-block text-capitalize">{{
+          predictionMatches?.m_Item2
+        }}</span>
+      </p>
+    </div>
+    <!-- PredictionsCARDS -->
+    <div class="width-100  relativePredictionsCards">
+      <div class="prediction-closed" *ngIf="predictionMatches?.m_Item1">
+        <div>
+          <img src="/assets/images/Lock.png" width="60px" height="auto" />
+          <p class="py-3" translate>
+            {{ "app.PredictionisnowclosedItwillreopenonTuesday" | translate }}
+          </p>
+        </div>
+      </div>
+      <div class="col-12 height-fixed ">
+        <div class="row">
+          <div class="col-12">
+            <form #f="ngForm">
+              <div
+                class="card prediction-card"
+                *ngFor="let match of matchesList; let ix = index"
+                [attr.data-index]="ix"
+              >
+                <div class="card-body">
+                  <p class="date ">
+                    {{ match.MatchDate | date: "dd/MM/yyyy hh:mm a" }}
+                  </p>
+                  <div class="prediction-row">
+                    <label
+                      class="prediction-label aqua-bg "
+                      for="compititor2"
+                      [ngClass]="{ 'purple-bg': match.Team1ClassId === 1 }"
+                      >{{ match.Team1Name }}</label
+                    >
+                    <input
+                      id="compititor2"
+                      class="input-rounded-sm"
+                      type="text"
+                      placeholder="0"
+                      [value]="match.Team1Result"
+                      [(ngModel)]="userPredictions[ix].Team1Result"
+                      name="team1Result + {{ ix }}"
+                      min="0"
+                    />
+                    <p class="vs-font">VS.</p>
+                    <input
+                      id="compititor2"
+                      class="input-rounded-sm"
+                      type="text"
+                      placeholder="0"
+                      [(ngModel)]="userPredictions[ix].Team2Result"
+                      name="team2Result + {{ ix }}"
+                      min="0"
+                    />
+                    <label
+                      class="prediction-label aqua-bg "
+                      for="compititor3"
+                      [ngClass]="{ 'purple-bg': match.Team2ClassId === 1 }"
+                      >{{ match.Team2Name }}</label
+                    >
+                  </div>
+                  <div class="card-text" translate>
+                    {{ "app.Enternumberofcoinsforprediction" | translate }}
+                  </div>
+                  <div class="form-group">
+                    <input
+                      (change)="calcCoins()"
+                      id="compititor3"
+                      class="form-control text-center"
+                      type="text"
+                      [(ngModel)]="userPredictions[ix].BettingCoins"
+                      name="bettingCoins + {{ ix }}"
+                      min="0"
+                    />
+                  </div>
+                </div>
+                <!-- <hr *ngIf="isSameDate(match.MatchDate)" class="hr" /> -->
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-12">
+      <div class="form-group" translate>
+        <button
+          [disabled]="predictionMatches?.m_Item1"
+          class="btn btn-primary btn-block"
+          translate
+          (click)="submitPredictions()"
+        >
+          {{ "app.submit" | translate }}
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Button trigger modal -->
+<button
+  [hidden]="true"
+  id="successPopup"
+  type="button"
+  class="btn btn-primary"
+  data-toggle="modal"
+  data-target="#exampleModal"
+>
+  Success
+</button>
+
+<!-- Modal -->
+<div
+  class="modal fade"
+  id="exampleModal"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-body">
+        <img
+          *ngIf="commonService.success"
+          src="../../assets/images/Success.png"
+        />
+        <img *ngIf="commonService.error" src="../../assets/images/Error.png" />
+        <!-- <h5 class="modal-title">{{ "app.SuccessMessage" | translate }}</h5> -->
+        <p>
+          {{ commonService.message }}
+        </p>
+        <button
+          type="button"
+          class="btn btn-primary btn-block "
+          data-dismiss="modal"
+        >
+          {{ "app.Ok" | translate }}
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Button trigger modal -->

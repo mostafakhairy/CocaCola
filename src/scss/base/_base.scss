@@ -1,0 +1,300 @@
+@import "../base/fonts";
+// STYLES=============================================
+
+// // Header & TEXTS==================================
+.header-text {
+  font-size: 1.2rem;
+  color: #fff;
+  text-align: center;
+  @include ltr(font-family, $font-family-bold);
+  @include rtl(font-family, $font-family-arabic-bold);
+  @include media-breakpoint-down(xs) {
+    font-size: 0.8rem;
+  }
+}
+.heading-text {
+  font-size: 1.2rem;
+  padding: 1rem 0;
+  margin-bottom: 0;
+  text-transform: uppercase;
+  @include ltr(font-family, $font-family-bold);
+  @include rtl(font-family, $font-family-arabic-bold);
+}
+.sub-heading {
+  font-size: 1.2rem;
+  padding: 1rem 0;
+  margin-bottom: 0;
+  text-transform: uppercase;
+  @include ltr(font-family, $font-family-bold);
+  @include rtl(font-family, $font-family-arabic-Medium);
+}
+.heading-text::after {
+  content: "";
+  // position: absolute;
+  height: 5px;
+  background: $primary;
+  border-radius: 4rem;
+  width: 100px;
+  display: block;
+  margin-top: 1rem;
+}
+.font-sm {
+  font-size: 0.875rem !important;
+}
+.font-lg {
+  font-size: 1.5rem !important;
+}
+//PADDING & MARGINS=======================
+.px-2rem {
+  padding-right: 2rem !important;
+  padding-left: 2rem !important;
+}
+//BODY=====================================
+.sec-padding {
+  padding: 1rem;
+}
+img {
+  max-width: 100%;
+}
+.bg-gray {
+  background: $light-gray;
+}
+.flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.width-100 {
+  width: 100% !important;
+}
+//FORMS==================================
+.btn {
+  border-radius: 4rem;
+  padding: 0.7rem 2rem;
+  // padding: 0.8rem 2rem;
+  @include ltr(font-family, $font-family-medium);
+  @include rtl(font-family, $font-family-arabic-Medium);
+}
+.btn-sm {
+  border-radius: 4rem;
+  padding: 0.375rem 2rem;
+}
+.btn-fb {
+  background: #3c5a99;
+  color: #fff;
+  // white-space: nowrap;
+}
+.btn-fb:hover {
+  background: #284175;
+  color: #fff;
+}
+.btn-fb:focus,
+.btn-fb.focus {
+  outline: 0;
+  box-shadow: 0 0 0 0.2rem rgba(60, 90, 153, 0.36);
+}
+.btn-secondary {
+  color: #fff;
+}
+.form-control {
+  border-radius: 4rem;
+  background: #f2f2f2;
+  // border: 1px solid #fff;
+  border: 1px solid #76767630;
+  padding: 1rem 1.75rem;
+  height: calc(1.5em + 1rem + 2px);
+}
+//VALIDATION===================================
+.invalidFeedback {
+  width: 100%;
+  margin-top: 0.25rem;
+  font-size: 80%;
+  color: #dc3545;
+}
+.validFeedback {
+  width: 100%;
+  margin-top: 0.25rem;
+  font-size: 80%;
+  color: #28a745;
+}
+// .ng-touched .form-control:invalid, .form-control.is-invalid {
+// form.ng-touched .form-control.ng-touched:not(.ng-dirty)
+form.ng-touched .form-control.ng-touched.ng-invalid,
+form.ng-touched .form-control.ng-touched:not(.ng-dirty).ng-invalid{
+  border-color: #dc3545;
+  padding-right: calc(1.5em + 0.75rem);
+  background-image: url("/assets/images/error.svg");
+  background-repeat: no-repeat;
+  background-position: center right calc(0.375em + 0.1875rem);
+  background-size: calc(0.75em + 0.375rem) calc(0.75em + 0.375rem);
+}
+//Drink-Win & Predict-Win & My Predictions====================
+.purple-bg {
+  background: $purple !important;
+}
+.aqua-bg {
+  background: $aqua;
+}
+.hr {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  // border-top: 1px solid $border-gray;
+}
+.bg-grey {
+  background: #d0d0d0 !important;
+}
+.green {
+  color: $light-green !important;
+}
+.red {
+  color: $light-red !important;
+}
+.card-img {
+  width: 40px !important;
+  height: auto !important;
+}
+.img-sm {
+  width: 24px !important;
+  height: auto !important;
+}
+.nav-link {
+  text-transform: capitalize;
+}
+.relative {
+  position: relative !important;
+}
+//PAGES [drink&win , Ranking]============================
+.nav-pills .nav-item:first-child > .nav-link {
+  @include ltr(border-top-left-radius, 1rem);
+  @include ltr(border-bottom-left-radius, 1rem);
+  @include ltr(border-top-right-radius, 0);
+  @include ltr(border-bottom-right-radius, 0);
+  //RTL
+  @include rtl(border-top-right-radius, 1rem);
+  @include rtl(border-bottom-right-radius, 1rem);
+  @include rtl(border-top-left-radius, 0);
+  @include rtl(border-bottom-left-radius, 0);
+}
+.nav-pills .nav-item:last-child > .nav-link {
+  @include ltr(border-top-right-radius, 1rem);
+  @include ltr(border-bottom-right-radius, 1rem);
+  @include ltr(border-top-left-radius, 0);
+  @include ltr(border-bottom-left-radius, 0);
+  //RTL
+  @include rtl(border-top-left-radius, 1rem);
+  @include rtl(border-bottom-left-radius, 1rem);
+  @include rtl(border-top-right-radius, 0);
+  @include rtl(border-bottom-right-radius, 0);
+}
+//RANKING PAGE=====================================
+.card-header,
+.card-header-friends {
+  @include ltr(background-position, right);
+  @include rtl(background-position, left);
+  img {
+    @include ltr(margin-right, 0.5rem);
+    @include ltr(margin-left, 0);
+    //RTL
+    @include rtl(margin-left, 0.5rem);
+    @include rtl(margin-right, 0);
+  }
+}
+//NAVIGATION BAR=====================================
+.navbar-brand {
+  @include media-breakpoint-down(xs) {
+    flex-basis: 100% !important;
+    text-align: center !important;
+    margin-left: 0 !important;
+  }
+}
+// solve Issue in Navbar when App is arabic
+.actions-bar {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+.actions-bar {
+  @include media-breakpoint-down(xs) {
+    flex-basis: 100% !important;
+    display: flex;
+    justify-content: space-between;
+  }
+}
+//End
+.sidenav {
+  @include ltr(right, 0);
+  @include ltr(left, auto);
+  //RTL
+  @include rtl(left, 0);
+  @include rtl(right, auto);
+}
+.sidenav a.closebtn {
+  @include ltr(text-align, right);
+  @include rtl(text-align, left);
+}
+.navbar-custom {
+  @include media-breakpoint-down(xs) {
+    padding: 0 !important;
+  }
+}
+//PREDICTION PAGE=====================================
+.prediction-row {
+  @include media-breakpoint-down(xs) {
+    align-items: stretch !important;
+    flex-direction: column;
+    text-align: center;
+  }
+}
+.prediction-label {
+  @include media-breakpoint-down(xs) {
+    padding: 0.3rem 0.8rem !important;
+  }
+}
+.input-rounded-sm {
+  @include media-breakpoint-down(xs) {
+    width: 2.5rem !important;
+    height: 2.5rem !important;
+    margin: 0.5rem auto;
+  }
+}
+.date {
+  margin-bottom: 1rem;
+  color: $gray;
+  font-size: 0.9rem;
+  @include ltr(font-family, $font-family-medium);
+  @include rtl(font-family, $font-family-arabic-Medium);
+}
+.vs-font {
+  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+  color: $primary;
+}
+
+// new css
+.underline {
+  text-decoration: underline;
+}
+
+.terms {
+  input {
+    position: relative;
+    top: 1px;
+  }
+  font-size: 13px;
+}
+//Modals
+.modal-content {
+  border: 0;
+  border-radius: 1rem;
+}
+.modal-body {
+  padding: 3rem;
+  text-align: center;
+  img {
+    width: 4rem;
+    height: auto;
+    margin-bottom: 1.5rem;
+  }
+  p {
+    margin-bottom: 1.5rem;
+  }
+}

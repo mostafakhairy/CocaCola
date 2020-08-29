@@ -1,0 +1,248 @@
+<!-- BODY -->
+<section class="sec-padding">
+  <div class="container">
+    <h2 class="heading-text">{{ "app.Ranking" | translate }}</h2>
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <p class="mb-3">
+          {{ "app.RankingDesc" | translate }}
+        </p>
+        <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+          <li class="nav-item">
+            <a
+              class="nav-link active"
+              id="pills-home-tab"
+              data-toggle="pill"
+              href="#pills-home"
+              role="tab"
+              aria-controls="pills-home"
+              aria-selected="true"
+              >{{ "app.GlobalRanking" | translate }}</a
+            >
+          </li>
+          <li class="nav-item" *ngIf="false">
+            <a
+              class="nav-link"
+              id="pills-contact-tab"
+              data-toggle="pill"
+              href="#pills-contact"
+              role="tab"
+              aria-controls="pills-contact"
+              aria-selected="false"
+              >{{ "app.FirendsRanking" | translate }}</a
+            >
+          </li>
+        </ul>
+        <div class="tab-content" id="pills-tabContent">
+          <div
+            class="tab-pane fade show active"
+            id="pills-home"
+            role="tabpanel"
+            aria-labelledby="pills-home-tab"
+          >
+            <div class="container py-3">
+              <div class="row">
+                <div class="col-12">
+                  <div class="card ranking-card">
+                    <h5 class="card-header" *ngIf="false">
+                      <img
+                        src="../../assets/images/global_icon.png"
+                        class="card-img"
+                      />
+                      {{ "app.GlobalRanking" | translate }}
+                    </h5>
+                    <div class="card-body  ranking-num-row">
+                      <div class="ranking-num">
+                        <img
+                          src="../../assets/images/star_icon.png"
+                          class="card-img"
+                        />
+                        #{{ userRank.UserRank }}
+                      </div>
+                      <div class="ranking-num">
+                        <img
+                          src="../../assets/images/Pts.png"
+                          class="card-img"
+                        />
+                        {{ userRank.UserCoins  | number: '2.' }}
+                      </div>
+                    </div>
+                  </div>
+                  <div class="pb-5">
+                    <ul class="list-group list-group-flush">
+                      <li
+                        class="list-group-item ranking-list-item"
+                        [ngClass]="{ winner: rank.IsWinner }"
+                        *ngFor="let rank of userRank.UsersRanks"
+                      >
+                        <div class="d-flex align-items-center">
+                          <img
+                            *ngIf="rank.UserRank == 1"
+                            src="../../assets/images/first.png"
+                            class="list-item-img"
+                          />
+                          <img
+                            *ngIf="rank.UserRank == 2"
+                            src="../../assets/images/second.png"
+                            class="list-item-img"
+                          />
+                          <img
+                            *ngIf="rank.UserRank == 3"
+                            src="../../assets/images/third.png"
+                            class="list-item-img"
+                          />
+                          <div
+                            [hidden]="
+                              rank.UserRank == 1 ||
+                              rank.UserRank == 2 ||
+                              rank.UserRank == 3
+                            "
+                            class="list-item-img"
+                          >
+                            #{{ rank.UserRank }}
+                          </div>
+                          <img
+                            *ngIf="
+                              rank.Img != null ||
+                              rank.Img != undefined ||
+                              rank.Img
+                            "
+                            [src]="rank.Img"
+                            class="list-item-img"
+                          />
+                          <img
+                            *ngIf="
+                              rank.Img == null ||
+                              rank.Img == undefined ||
+                              !rank.Img
+                            "
+                            src="../../assets/images/User.png"
+                            class="list-item-img"
+                          />
+                          <div class="d-flex flex-column">
+                            <p class="px-xs-1 px-sm-2">
+                              {{ rank.UserName }} {{ rank.LastName }}
+                            </p>
+                            <p class="winner-text" *ngIf="rank.IsWinner">
+                              {{ "app.winTicket" | translate }}
+                            </p>
+                          </div>
+                        </div>
+                        <div class="d-flex align-items-center ml-auto">
+                         
+                          <p>{{ rank.UserCoins| number: '2.' }}</p>
+                          <img
+                          src="../../assets/images/Pts.png"
+                          class="list-item-img"
+                        />
+                        </div>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            class="tab-pane fade"
+            id="pills-contact"
+            role="tabpanel"
+            aria-labelledby="pills-contact-tab"
+          >
+            <div class="container py-3">
+              <div class="row">
+                <div class="col-12">
+                  <div class="card ranking-card">
+                    <h5 class="card-header card-header-friends">
+                      <img
+                        src="../../assets/images/friends_icon.png"
+                        class="card-img"
+                      />
+                      {{ "app.yourRankAmongFriends" | translate }}
+                    </h5>
+                    <div class="card-body ranking-num-row">
+                      <div class="ranking-num">
+                        <img
+                          src="../../assets/images/star_icon.png"
+                          class="card-img"
+                        />
+                        #{{ userFacebookRank.UserRank }}
+                      </div>
+                      <div class="ranking-num">
+                        <img
+                          src="../../assets/images/Pts.png"
+                          class="card-img"
+                        />
+                        {{ userFacebookRank.UserCoins }}
+                      </div>
+                    </div>
+                  </div>
+                  <div class="pb-5">
+                    <ul class="list-group list-group-flush">
+                      <li
+                        class="list-group-item ranking-list-item"
+                        [ngClass]="{ winner: faceRank.IsWinner }"
+                        *ngFor="let faceRank of userFacebookRank.UsersRanks"
+                      >
+                        <div class="d-flex align-items-center">
+                          <img
+                            *ngIf="faceRank.UserRank == 1"
+                            src="../../assets/images/first.png"
+                            class="list-item-img"
+                          />
+                          <img
+                            *ngIf="faceRank.UserRank == 2"
+                            src="../../assets/images/second.png"
+                            class="list-item-img"
+                          />
+                          <img
+                            *ngIf="faceRank.UserRank == 3"
+                            src="../../assets/images/third.png"
+                            class="list-item-img"
+                          />
+                          <div
+                            [hidden]="
+                              faceRank.UserRank == 1 ||
+                              faceRank.UserRank == 2 ||
+                              faceRank.UserRank == 3
+                            "
+                            class="list-item-img"
+                          >
+                            #{{ faceRank.UserRank }}
+                          </div>
+                          <img
+                            *ngIf="faceRank.Img != ''"
+                            src="data:image/png;base64,{{ faceRank.Img }}"
+                            class="list-item-img"
+                          />
+                          <div class="d-flex flex-column">
+                            <p class="px-xs-1 px-sm-2">
+                              {{ faceRank.UserName }}
+                            </p>
+                            <p class="winner-text" *ngIf="faceRank.IsWinner">
+                              WON A TICKET
+                            </p>
+                          </div>
+                        </div>
+                        <div class="d-flex align-items-center ml-auto">
+                        
+                          <p>{{ faceRank.UserCoins }}</p>
+                          <img
+                          src="../../assets/images/Pts.png"
+                          class="list-item-img"
+                        />
+                        </div>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

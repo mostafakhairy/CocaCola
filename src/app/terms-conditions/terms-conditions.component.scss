@@ -1,0 +1,15 @@
+p{
+    line-height: 180%;
+}
+ol{
+    li{
+        margin-bottom: .8rem;
+    }
+}
+@import "../../scss/base/fonts";
+
+section , .sec-padding {
+    direction: rtl;
+    text-align: right;
+    font-family: $font-family-arabic;
+}

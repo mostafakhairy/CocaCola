@@ -1,0 +1,49 @@
+//Fonts
+@font-face {
+    font-family: "Montserrat";
+    src: url("/assets/fonts/Montserrat/Montserrat-Regular.ttf");
+  }
+  @font-face {
+    font-family: "Montserrat_Light";
+    src: url("/assets/fonts/Montserrat/Montserrat-Light.ttf");
+  }
+  @font-face {
+    font-family: "Montserrat_Medium";
+    src: url("/assets/fonts/Montserrat/Montserrat-Medium.ttf");
+  }
+  @font-face {
+    font-family: "Montserrat_Bold";
+    src: url("/assets/fonts/Montserrat/Montserrat-SemiBold.ttf");
+  }
+  @font-face {
+    font-family: "Montserrat_Italic";
+    src: url("/assets/fonts/Montserrat/Montserrat-SemiBoldItalic.ttf");
+  }
+
+  @font-face {
+    font-family: "AR_Regular";
+    // src: url("/assets/fonts/Droid_AR/Droid-Sans-Arabic.ttf");
+
+    src: url("/assets/fonts/cairo/Cairo-Regular.ttf");
+  }
+  @font-face {
+    font-family: "AR_Medium";
+    src: url("/assets/fonts/cairo/Cairo-SemiBold.ttf");
+  }
+  @font-face {
+    font-family: "AR_Bold";
+    src: url("/assets/fonts/cairo/Cairo-Bold.ttf");
+  }
+
+  // Fonts_Variables
+$font-family-base:"Montserrat";
+$font-family-light:"Montserrat_Light";
+$font-family-medium:"Montserrat_Medium";
+$font-family-bold:"Montserrat_Bold";
+$font-family-Italic:"Montserrat_Italic";
+//RTL
+$font-family-arabic:"AR_Regular";
+$font-family-arabic-Medium:"AR_Medium";
+$font-family-arabic-bold:"AR_Bold";
+
+

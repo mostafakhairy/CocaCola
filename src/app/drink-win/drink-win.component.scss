@@ -1,0 +1,53 @@
+// @import "../../scss/base/fonts";
+// @import "../../scss/frameworks/bootstrap/bootstrap-user-variables";
+@import "../../scss/frameworks/index";
+@import '../../scss/base/index';
+.drink-and-win > *,
+.drink-and-win > input,
+.drink-and-win > caption {
+  text-align: center;
+}
+.drink-and-win legend {
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+  @include ltr(font-family, $font-family-bold);
+  @include rtl(font-family, $font-family-arabic-bold);
+  font-size: 1.2rem;
+}
+//TAPS
+.nav-pills .nav-item {
+  flex: 50%;
+  text-align: center;
+  @include ltr(font-family, $font-family-Italic);
+  @include rtl(font-family, $font-family-arabic);
+}
+.nav-pills .nav-link {
+  color: #fff;
+  background-color: $secondary;
+  padding: 1rem;
+}
+.nav-pills .nav-link.active,
+.nav-pills .show > .nav-link {
+  color: #fff;
+  background-color: $primary;
+}
+.code-notify {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  img {
+    width: 25px;
+    margin-right: 0.5rem;
+    margin-left: 0.5rem;
+
+  }
+  p {
+    margin-bottom: 0;
+  }
+}
+.notify-text{
+    color: $notification-color;
+    @include ltr(font-family, $font-family-bold);
+    @include rtl(font-family, $font-family-arabic-bold);
+  }
+

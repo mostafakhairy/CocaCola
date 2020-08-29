@@ -1,0 +1,86 @@
+<section class="sec-padding">
+  <div class="container">
+    <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+      <li class="nav-item">
+        <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab"
+          aria-controls="pills-home" aria-selected="true" (click)="changeTab()">
+          {{ "app.predictAndWin" | translate }}</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#pills-contact" role="tab"
+          aria-controls="pills-contact" aria-selected="false" (click)="changeTab()">
+          {{ "app.drinkAndWin" | translate }}</a>
+      </li>
+    </ul>
+    <div class="tab-content" id="pills-tabContent">
+      <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+        <app-predict-win translate></app-predict-win>
+      </div>
+      <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">
+        <div class="container py-3" *ngIf="!isBurend">
+          <div class="row">
+            <div class="col-12">
+              <div class="drink-and-win">
+                <p class="px-2rem">
+                  {{ "app.drinkAndEarn" | translate }}
+                </p>
+                <form>
+                  <legend class="text-center" translate>
+                    {{"app.Enterthecodeunderthebottlecap"|translate}}
+                  </legend>
+                  <div class="form-group">
+                    <label for="codeNum" class="sr-only">Code</label>
+                    <input #codeNum class="form-control text-center" (keyup.enter)="burnCoupon(codeNum.value)"
+                      id="codeNum" placeholder="e.g.xxxxxx" />
+                    <!-- <div *ngIf="commonService.success" class="validFeedback">
+                      success
+                    </div> -->
+                    <div *ngIf="commonService.error" class="invalidFeedback">
+                      {{ commonService.message }}
+                    </div>
+                  </div>
+                  <div class="form-group my-4">
+                    <button type="button" (click)="burnCoupon(codeNum.value)" translate
+                      class="btn btn-primary btn-block">
+                      {{"app.submit"|translate}}
+                    </button>
+                  </div>
+                </form>
+              </div>
+              <div class="code-notify d-flex">
+                <img src="../../assets/images/alarm.png" />
+                <p>
+                  {{ "app.findingGift" | translate }}
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Drink&Win === NEW CODE -->
+        <div class="container py-3" *ngIf="isBurend">
+          <div class="row">
+            <div class="col-12">
+              <div class="drink-and-win">
+                <p class="px-2rem">
+                  {{ "app.drinkAndEarn" | translate }}
+                </p>
+                <form>
+                  <legend class="text-center"> {{"app.Congratulations"|translate}}</legend>
+                  <!-- <img src="../../assets/images/coins_img.png" class="mb-3" /> -->
+                  <p class="notify-text">
+                    {{"app.WinCoinsNotify"|translate:param}}
+                  </p>
+                  <div class="form-group my-4">
+                    <button type="button" class="btn btn-primary btn-block" (click)="newCode()">
+                      {{"app.NewCode"|translate}}
+                    </button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

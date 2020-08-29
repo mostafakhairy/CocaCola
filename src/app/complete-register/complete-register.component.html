@@ -1,0 +1,173 @@
+<header class="header">
+  <div class="container">
+    <div class="row">
+      <div class="col-7 py-1 ">
+        <!-- <h1 class="header-text">DRINK, PREDICT AND WIN ...</h1> -->
+      </div>
+    </div>
+  </div>
+</header>
+<section class="sec-padding">
+  <div class="container">
+    <h2 class="heading-text">
+      {{ "app.completeYourRegistration" | translate }}
+    </h2>
+  </div>
+  <div class="container py-5">
+    <form #f="ngForm">
+      <div
+        *ngIf="commonService.error && formSubmited"
+        class="invalidFeedback mb-3"
+      >
+        <i class="fas fa-exclamation-circle"></i> {{ commonService.message }}
+      </div>
+      <div class="form-row">
+        <div class="form-group col-6">
+          <label for="FN">{{ "app.firstName" | translate }}</label>
+          <input
+            type="text"
+            class="form-control"
+            id="FN"
+            placeholder="{{ 'app.firstName' | translate }}"
+            name="firstName"
+            [(ngModel)]="user.firstName"
+            required
+            #firstName="ngModel"
+          />
+
+          <div
+            *ngIf="firstName.invalid && firstName.touched"
+            class="invalidFeedback"
+          >
+            {{ "app.provideFirstName" | translate }}
+          </div>
+        </div>
+        <div class="form-group col-6">
+          <label for="LN">{{ "app.lastName" | translate }}</label>
+          <input
+            type="text"
+            class="form-control"
+            id="LN"
+            placeholder="{{ 'app.lastName' | translate }}"
+            name="lastName"
+            [(ngModel)]="user.lastName"
+            #lastName="ngModel"
+          />
+        </div>
+
+        <!-- <div class="invalidFeedback" *ngIf="lastName.invalid && lastName.touched">
+          Please provide a valid last name.
+        </div> -->
+      </div>
+      <div class="form-row">
+        <div class="form-group col-8">
+          <label for="tel">{{ "app.mobileNumber" | translate }}</label>
+          <input
+            type="tel"
+            class="form-control"
+            id="tel"
+            maxlength="12"
+            placeholder="e.g. 01 xxxxxxxxx"
+            name="mobileNumber"
+            [(ngModel)]="user.mobileNumber"
+            required
+            [disabled]="verified || loading"
+            pattern="^0[1][0-9]{9}$"
+            #mobileNumber="ngModel"
+          />
+          <div
+            *ngIf="mobileNumber.invalid && mobileNumber.touched"
+            class="invalidFeedback"
+          >
+            {{ "app.providemobileNumber" | translate }}
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <button
+          type="button"
+          class="btn btn-primary btn-sm"
+          [disabled]="!user.mobileNumber"
+          (click)="sendOtp()"
+        >
+          {{ "app.Verify" | translate }}
+        </button>
+        <button
+          class="link-sm refButton"
+          (click)="sendOtp()"
+          [disabled]="!user.mobileNumber"
+        >
+          {{ "app.resendOtp" | translate }}
+        </button>
+        <span *ngIf="messageSent"> {{ "app.smsDelay" | translate }}</span>
+      </div>
+      <div class="form-row">
+        <div class="form-group col-8">
+          <label for="vCode">{{ "app.verificationCode" | translate }}</label>
+          <input
+            type="text"
+            class="form-control"
+            id="vCode"
+            placeholder="xxxxxx"
+            [(ngModel)]="code"
+            name="vecode"
+            required
+            [disabled]="!messageSent || loading"
+            #vecode="ngModel"
+            maxlength="6"
+            pattern="\d{6}"
+          />
+          <!-- <div *ngIf="vecode.invalid && vecode.touched" class="invalidFeedback">
+              {{ "app.provideVerificationCode" | translate }}
+          </div> -->
+          <div
+            *ngIf="commonService.error && !formSubmited"
+            class="invalidFeedback"
+          >
+            {{ commonService.message }}
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <button
+          type="button"
+          [disabled]="!code || !messageSent || verified"
+          class="btn btn-primary btn-sm"
+          (click)="verifyOtp(code)"
+        >
+          {{ "app.Confirm" | translate }}
+        </button>
+        <div *ngIf="verified" class="validFeedback">{{ verifiedMessage }}</div>
+      </div>
+
+      <div class="col-12 terms">
+        <input
+          type="checkbox"
+          name="acceptTerms"
+          #acceptTerm="ngModel"
+          ngModel
+          (change)="acceptTerms(acceptTerm.value)"
+        />
+        {{ "app.acceptTerms" | translate }}
+        <span class="underline" link="/#/terms-conditions" appRouteNewtab>
+          {{ "app.termAndConditions" | translate }}
+        </span>
+        <span>{{ "app.readPolicy" | translate }}</span>
+        <span class="underline" link="/#/privacy-policy" appRouteNewtab>
+          {{ "app.policy" | translate }}
+        </span>
+      </div>
+
+      <div class="form-group my-4">
+        <button
+          type="button"
+          class="btn btn-primary btn-block"
+          (click)="register()"
+          [disabled]="f.invalid || !verified || loading || !checked"
+        >
+          {{ "app.Register" | translate }}
+        </button>
+      </div>
+    </form>
+  </div>
+</section>

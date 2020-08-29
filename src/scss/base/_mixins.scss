@@ -1,0 +1,13 @@
+/* Custom Mixins -------------------- */
+
+@mixin rtl($prop,$value) {  
+    html[dir=rtl] & {
+      #{$prop}: $value;
+    }
+  }
+  
+  @mixin ltr($prop,$value) {  
+    html[dir=ltr] & {
+      #{$prop}: $value;
+    }
+  }

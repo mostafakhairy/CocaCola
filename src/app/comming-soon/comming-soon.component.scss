@@ -1,0 +1,23 @@
+@import "../../scss/frameworks/bootstrap/bootstrap-user-variables";
+.comming-soon{
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+    color: #fff;
+    font-size: 2rem;
+    font-family:$font-family-bold;
+    text-transform: uppercase;
+    white-space: nowrap;
+    text-shadow: 0 0 10px #000;
+}
+.bg-opacity{
+    background: rgba(0, 0, 0, 0.65);
+    padding: .5rem;
+    border-radius: 4rem;
+    font-size: 1rem;
+    width: 70%;
+    margin: auto;
+    font-family:$font-family-base;
+    text-transform:none;
+}

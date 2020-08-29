@@ -1,0 +1,16 @@
+// html , body{ 
+//     direction: rtl !important;
+//     text-align: right;
+// }
+p{
+    line-height: 180%;
+}
+@import "../../scss/base/fonts";
+
+section , .sec-padding  , .sub-heading{
+    direction: rtl;
+    text-align: right;
+    font-family: $font-family-arabic;
+}
+p.sub-heading{
+    font-family: $font-family-arabic;}

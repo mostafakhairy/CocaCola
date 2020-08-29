@@ -1,0 +1,74 @@
+<!-- HEADER -->
+<header class="header">
+    <div class="container">
+        <div class="row flex-column flex-center">
+            <div class="col-12 py-3 ">
+                <!-- <h1 class="header-text">
+                 {{ "app.headingText" | translate }}
+                </h1> -->
+            </div>
+            <div class="col-md-6 col-sm-8 col-11  py-1" *ngIf="!commonService.isUserLogged()">
+                    <button class="btn btn-light btn-block text-primary" [routerLink]="['/login']"
+                    routerLinkActive="router-link-active">
+                    {{ "app.loginAndRegister" | translate }}
+                </button>
+            </div>
+            <!-- col-11 col-sm-9 col-md-5  -->
+            <div class="col-md-6 col-sm-8  col-11  py-1" *ngIf="!commonService.isUserLogged()">
+                <button class="btn btn-fb btn-block flex-center" (click)="signInWithFB()">
+                    <i class="fab fa-facebook mr-2 font-lg"></i>
+                    {{ "app.loginWithFacebook" | translate }}
+                    </button>
+            </div>
+        </div>
+    </div>
+    <div *ngIf="error" class="invalidFeedback">{{message}}</div>
+</header>
+<!-- BODY -->
+<section class="sec-padding bg-gray">
+    <div class="container">
+        <h2 class="heading-text">
+                {{ "app.predictAndWin" | translate }}
+         </h2>
+    </div>
+    <div class="container py-5">
+        <div class="row align-items-center">
+            <div class="col-8">
+                <p class="mb-3">
+                        {{ "app.homePredictDes1" | translate }}
+                                        </p>
+                <!-- <p class="mb-3">
+                        {{ "app.homePredictDes2" | translate }}
+                </p> -->
+            </div>
+            <div class="col-4">
+                <img src="../../assets/images/WIN.png">
+            </div>
+            <div class="col-12">
+                <button class="btn btn-primary" [routerLink]="['/about-game']">
+                        {{ "app.learnMore" | translate }}</button>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="sec-padding ">
+    <div class="container">
+        <h2 class="heading-text"> {{ "app.drinkAndWin" | translate }}</h2>
+    </div>
+    <div class="container py-5">
+        <div class="row align-items-center">
+            <div class="col-8">
+                <p class="mb-3">
+
+                        {{ "app.homeDrinkDes1" | translate }}
+                  </p>
+            </div>
+            <div class="col-4">
+                <img src="../../assets/images/Coke_Cans.png">
+            </div>
+            <div class="col-12">
+                <button class="btn btn-primary" [routerLink]="['/about-game']" >{{ "app.learnMore" | translate }}</button>
+            </div>
+        </div>
+    </div>
+</section>

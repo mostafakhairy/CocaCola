@@ -1,0 +1,142 @@
+@import "../../scss/base/fonts";
+@import "../../scss/frameworks/bootstrap/bootstrap-user-variables";
+@import "../../scss/base/mixins";
+.drink-and-win > *,
+.drink-and-win > input,
+.drink-and-win > caption {
+  text-align: center;
+}
+//TAPS
+.nav-pills .nav-item {
+  flex: 50%;
+  text-align: center;
+  font-family: $font-family-Italic;
+}
+.nav-pills .nav-link {
+  color: #fff;
+  background-color: $secondary;
+  padding: 1rem;
+}
+.nav-pills .nav-link.active,
+.nav-pills .show > .nav-link {
+  color: #fff;
+  background-color: $primary;
+}
+///////////////////////////////////////////////////
+.prediction-date {
+  color: $medium-gray;
+  padding: 1rem 0 2rem 0;
+  font-family: $font-family-bold;
+  @include ltr(  text-align, left);
+  @include rtl( text-align, right);
+}
+.prediction-card {
+  background-color: #fff;
+  color: $dark-gray;
+  border: 1px solid #0000;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  margin-bottom: 1rem;
+}
+.prediction-row {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+.prediction-label {
+  padding: 0.3rem 1.2rem;
+  border-radius: 4rem;
+  margin-bottom: 0;
+  font-family: $font-family-medium;
+  color: #fff;
+}
+.input-rounded-sm {
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  border: 1px solid $border-gray;
+  text-align: center;
+  color: $dark-gray;
+  background: $light-gray;
+}
+.prediction-card .card-text {
+  text-align: center;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+.relativePredictionsCards{
+  position: relative;
+
+}
+.height-fixed {
+  padding: 1rem;
+  height: 450px;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+.prediction-closed {
+  opacity: 0.9;
+  // width: 94%;
+  width: 100%;
+  margin: auto;
+  min-height: 430px;
+  background-color: #000;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  padding: 3rem;
+  border-radius: 1rem;
+  color: #fff;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+
+}
+//To close Scrolling from heightFixed
+.prediction-closed + .height-fixed {
+  overflow-y: hidden;
+  overflow-x: hidden;
+}
+//PIE CHARTS
+.chart {
+  position: relative;
+  display: inline-block;
+  // margin: 20px 10px;
+  color: #999;
+  font-size: 14px;
+  text-align: center;
+}
+.chart canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.heading-text{
+  color: $primary;
+  text-transform: capitalize;
+  &:after{
+content: none;
+  }
+}
+.chart-text {
+  position: absolute;
+  // top: 51px;
+  .num{
+    font-size: 2rem;
+    color: $primary;
+    font-family: $font-family-bold;
+  }
+  .num-grey{
+    color: $secondary;
+    font-family: $font-family-medium;
+  }
+}
+.easy-pie-chart{
+  position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

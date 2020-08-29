@@ -1,0 +1,183 @@
+<nav class="navbar  navbar-light bg-light px-0 px-md-3">
+  <div class="container">
+    <a
+      class="navbar-brand"
+      [routerLink]="['/home']"
+      routerLinkActive="router-link-active"
+    >
+      <img
+        src="../../assets/images/Coca-Cola_logo.png"
+        width="80"
+        height="auto"
+        alt="CocaCola"
+      />
+    </a>
+    <div class="actions-bar" style="">
+      <div class=" navbar navbar-custom">
+        <ul class="navbar-nav">
+          <li class="nav-item" *ngIf="commonService.isUserLogged()">
+            <a class="nav-link">
+              <img [src]="commonService.userPhoto" class="img-sm mr-2" />
+              {{ this.commonService.userName }}</a
+            >
+          </li>
+          <li
+            class="nav-item ml-auto"
+            *ngIf="commonService.isUserLogged() && !commonService.isAdmin()"
+          >
+            <div class="text-primary">
+              {{ this.commonService.coins + " " }} {{ "app.Coins" | translate }}
+            </div>
+          </li>
+          <li
+            class="nav-item"
+            routerLinkActive="router-link-active"
+            *ngIf="commonService.isUserLogged() && !commonService.isAdmin()"
+          >
+            <a class="nav-link relative" [routerLink]="['/notifications']">
+              <span class="badge badge-pill badge-success">{{
+                this.commonService.notificationCount
+              }}</span>
+              <img src="../../assets/images/Bell.png" class="img-sm"
+            /></a>
+          </li>
+        </ul>
+      </div>
+      <button class="navbar-toggler" type="button" (click)="openNav()">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    </div>
+  </div>
+  <!-- collapse navbar-collapse -->
+  <div class=" sidenav" id="mySidenav">
+    <div class="sidenav-header">
+      <div *ngIf="commonService.isUserLogged()">
+        <img [src]="commonService.userPhoto" class="img-sm mr-2" />
+
+        {{ this.commonService.userName }}
+      </div>
+      <div *ngIf="commonService.isUserLogged() && !commonService.isAdmin()">
+        {{ commonService.coins + " " }} {{ "app.Coins" | translate }}
+      </div>
+    </div>
+    <ul class="navbar-nav">
+      <li class="nav-item" routerLinkActive="router-link-active">
+        <a class="nav-link" [routerLink]="['/home']" (click)="closeNav()"
+          >{{ "app.Home" | translate }}
+          <span class="sr-only">(current)</span></a
+        >
+      </li>
+      <li
+        class="nav-item"
+        routerLinkActive="router-link-active"
+        *ngIf="commonService.isUserLogged() && !commonService.isAdmin()"
+      >
+        <a
+          class="nav-link"
+          [routerLink]="['/drink-win']"
+          (click)="closeNav()"
+          >{{ "app.play" | translate }}</a
+        >
+      </li>
+
+      <li
+        class="nav-item"
+        routerLinkActive="router-link-active"
+        *ngIf="commonService.isUserLogged() && !commonService.isAdmin()"
+      >
+        <a
+          class="nav-link"
+          [routerLink]="['/predictions']"
+          (click)="closeNav()"
+          >{{ "app.myPredictions" | translate }}</a
+        >
+      </li>
+      <li
+        class="nav-item"
+        routerLinkActive="router-link-active"
+        *ngIf="commonService.isUserLogged() && !commonService.isAdmin()"
+      >
+        <a class="nav-link" [routerLink]="['/ranking']" (click)="closeNav()">{{
+          "app.ranking" | translate
+        }}</a>
+      </li>
+      <li class="nav-item" routerLinkActive="router-link-active">
+        <a
+          class="nav-link"
+          [routerLink]="['/about-game']"
+          (click)="closeNav()"
+          >{{ "app.AboutGame" | translate }}</a
+        >
+      </li>
+
+      <li class="nav-item" routerLinkActive="router-link-active">
+        <a
+          class="nav-link"
+          [routerLink]="['/terms-conditions']"
+          (click)="closeNav()"
+          >{{ "app.TermsConditions" | translate }}</a
+        >
+      </li>
+      <li class="nav-item" routerLinkActive="router-link-active">
+        <a
+          class="nav-link"
+          [routerLink]="['/privacy-policy']"
+          (click)="closeNav()"
+          >{{ "app.PrivacyPolicy" | translate }}</a
+        >
+      </li>
+      <li
+        class="nav-item"
+        routerLinkActive="router-link-active"
+        *ngIf="!commonService.isUserLogged()"
+      >
+        <a class="nav-link" [routerLink]="['/login']" (click)="closeNav()">{{
+          "app.login" | translate
+        }}</a>
+      </li>
+
+      <li
+        class="nav-item"
+        routerLinkActive="router-link-active"
+        *ngIf="commonService.isUserLogged() && commonService.isAdmin()"
+      >
+        <a
+          class="nav-link"
+          [routerLink]="['/admin-matches']"
+          (click)="closeNav()"
+          >{{ "app.adminMatches" | translate }}</a
+        >
+      </li>
+      <li
+        class="nav-item"
+        (click)="signOut()"
+        *ngIf="commonService.isUserLogged()"
+      >
+        <a href="javascript:void(0)" class="nav-link" (click)="closeNav()">{{
+          "app.signOut" | translate
+        }}</a>
+      </li>
+    </ul>
+  </div>
+  <div id="overlay3" (click)="closeNav()"></div>
+</nav>
+<nav class="navbar  bg-grey px-3">
+  <div class="container lang-container">
+    <a
+      href="javascript:void(0)"
+      [hidden]="commonService.isArabic"
+      (click)="changeLang('ar-EG')"
+      class="langBtn"
+    >
+      العربية
+    </a>
+    <a
+      href="javascript:void(0)"
+      [hidden]="!commonService.isArabic"
+      (click)="changeLang('en-US')"
+      class="langBtn"
+    >
+      English
+    </a>
+  </div>
+</nav>

@@ -1,0 +1,83 @@
+<div class="container py-3">
+  <div class="row">
+    <div *ngIf="commonService.error" class="invalidFeedback mb-3">
+      <i class="fas fa-exclamation-circle"></i> {{ commonService.message }}
+    </div>
+    <div *ngIf="commonService.success" class="validFeedback  mb-3">
+      <i class="fas fa-check-circle"></i> {{ commonService.message }}
+    </div>
+    <div class="col-12">
+      <p class="prediction-date">
+        <span class="text-primary d-block">Today</span>
+        {{ dateNow | date: "fullDate" }}
+      </p>
+    </div>
+    <!-- PredictionsCARDS -->
+    <div class="col-12 height-fixed ">
+      <div class="prediction-closed" *ngIf="false">
+        <div>
+          <img src="/assets/images/Lock.png" width="60px" height="auto" />
+          <p class="py-3" translate>
+            {{ "app.PredictionisnowclosedItwillreopenonTuesday" | translate }}
+          </p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12">
+          <form #f="ngForm">
+            <div
+              class="card prediction-card"
+              *ngFor="let match of matchesList; let ix = index"
+              [attr.data-index]="ix"
+            >
+              <div class="card-body">
+                <div class="prediction-row">
+                  <label class="prediction-label purple-bg" for="compititor2">{{
+                    match.Team1Name
+                  }}</label>
+
+                  <input
+                    id="compititor2"
+                    class="input-rounded-sm"
+                    type="text"
+                    placeholder="0"
+                    [value]="match.Team1Result"
+                    [(ngModel)]="match.Team1Result"
+                    name="team1Result + {{ ix }}"
+                    min="0"
+                  />
+                  <p>{{ match.MatchDate | date: "hh:mm" }}</p>
+                  <input
+                    id="compititor2"
+                    class="input-rounded-sm"
+                    type="text"
+                    placeholder="0"
+                    [(ngModel)]="match.Team2Result"
+                    name="team2Result + {{ ix }}"
+                    min="0"
+                  />
+
+                  <label class="prediction-label purple-bg" for="compititor3">{{
+                    match.Team2Name
+                  }}</label>
+                </div>
+              </div>
+              <!-- <hr *ngIf="isSameDate(match.MatchDate)" class="hr" /> -->
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="col-12">
+      <div class="form-group" translate>
+        <div
+          class="btn btn-primary btn-block"
+          translate
+          (click)="submitPredictions()"
+        >
+          {{ "app.submit" | translate }}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

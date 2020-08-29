@@ -1,0 +1,62 @@
+<!-- BODY -->
+<section class="sec-padding">
+  <div class="container">
+    <h2 class="heading-text">{{ "app.myPredictions" | translate }}</h2>
+  </div>
+  <div class="container py-5">
+    <div class="row">
+      <div class="col-12" *ngFor="let prediction of previousPredictions">
+        <p class="prediction-date">
+          {{ prediction.Match.MatchDate | date: "dd/MM/yyyy" }}
+        </p>
+        <div class="card prediction-card">
+          <div class="card-body">
+            <i class="fas thumb-icon green"
+             [ngClass]="{'fa-thumbs-up ': prediction.WinCoins > 0}" ></i>
+             <i class="fas thumb-icon red"
+             [ngClass]="{'fa-thumbs-down ': prediction.WinCoins === 0}" ></i>
+            <form>
+              <div class="prediction-row">
+                <label class="prediction-label aqua-bg"
+                [ngClass]="{'purple-bg': prediction.Team1ClassId === 1}" for="compititor1">{{
+                  commonService.lang === "ar-EG"
+                    ? prediction.Match.Team1.NameAR
+                    : prediction.Match.Team1.Name
+                }}</label>
+                <input
+                  id="compititor1"
+                  class="input-rounded-sm"
+                  type="text"
+                  value="{{ prediction.Team1Result }}"
+                  disabled
+                />
+                <p>{{ "app.fullTime" | translate }}</p>
+                <input
+                  id="compititor2"
+                  class="input-rounded-sm"
+                  type="text"
+                  value="{{ prediction.Team2Result }}"
+                  disabled
+                />
+                <label class="prediction-label aqua-bg"
+                [ngClass]="{'purple-bg': prediction.Team2ClassId === 1}" for="compititor2">{{
+                  commonService.lang === "ar-EG"
+                    ? prediction.Match.Team2.NameAR
+                    : prediction.Match.Team2.Name
+                }}</label>
+              </div>
+            </form>
+            <div class="card-text">
+              <!-- You predicted with {{ prediction.BettingCoins }} points and earned
+              {{ prediction.WinCoins }} points. -->
+              {{ "app.urPredictionsText" | translate }} {{ prediction.BettingCoins }} {{ "app.urPredictionsText1" | translate }}
+              {{ prediction.WinCoins }} {{ "app.Coins" | translate }} .
+            </div>
+          </div>
+        </div>
+        <hr class="hr" />
+      </div>
+      <h4 *ngIf="previousPredictions.length <= 0">{{'app.NoPredictions' | translate }}</h4>
+    </div>
+  </div>
+</section>

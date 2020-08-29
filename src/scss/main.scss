@@ -1,0 +1,122 @@
+//====================================
+// Global Imports
+//====================================
+
+// 1- Import bootstrap framework
+@import "frameworks/index";
+
+// 2 - Import plugins
+@import "plugins/index";
+
+// 3 - Import base style, custom variables and mixins
+@import "base/index";
+
+// 4 - Import modules
+@import "modules/index";
+
+// 5 - Import layout  styles
+@import "layout/index";
+
+// @import "./fonts";
+/* Base Styles -------------------- */
+//Example For AR/EN================
+// .btn-primary {
+//     position: absolute;
+//     @include rtl( right, 200px);
+//     @include ltr(left, 600px);
+// }
+// STYLES=============================================
+
+html {
+  // font-size: 16px;
+  @include media-breakpoint-down(xs) {
+    font-size: 14px;
+  }
+  @include ltr(font-size, 16px);
+  @include rtl(font-size, 14px);
+}
+body {
+  font-size: 1rem;
+  margin: 0;
+  background-color: #fff;
+  @include ltr(font-family, $font-family-base);
+  @include rtl(font-family, $font-family-arabic);
+}
+p {
+  margin-bottom: 0;
+}
+a {
+  color: #000;
+  @include ltr(font-family, $font-family-medium);
+  @include rtl(font-family, $font-family-arabic-Medium);
+  text-decoration: none;
+}
+a:hover,
+a.link-sm:hover {
+  color: #333;
+}
+a.link-sm {
+  color: #666;
+  // font-family: $font-family-medium;
+  text-decoration: underline;
+  font-size: 0.8rem !important;
+}
+.btn-primary {
+  text-transform: uppercase;
+}
+//COMMON==================================
+.font-md {
+  @include ltr(font-family, $font-family-medium);
+  @include rtl(font-family, $font-family-arabic-Medium);
+}
+// Header==================================
+.header  , .commingSoon-img{
+  padding: 1.5rem 1rem;
+  background: $primary;
+  background:$primary $en-header-image;
+  // @include ltr(background-image, $en-header-image);
+  @include rtl(background-image, $ar-header-image);
+  background-size: cover;
+  background-repeat: no-repeat;
+  min-height: 284px;
+  background-position: top center;
+  display: flex;
+  align-items: flex-end;
+  max-width: 100%;
+  @include media-breakpoint-up(sm) {
+    min-height: 400px;
+  }
+  @include media-breakpoint-up(lg) {
+    background-position: center -90px;
+    min-height: 510px;
+  }
+}
+.commingSoon-img{
+  background:$primary url(../assets/images/en_header_img.jpg);
+}
+.refButton {
+  background: none!important;
+  border: none;
+  text-decoration: underline;
+  cursor: pointer;
+  display: block;
+  font-size: 0.8rem;
+  padding: .5rem;
+}
+.inlineCustom {
+  display: inline !important;
+}
+.langBtn{
+  background: #f1f1f1;
+  padding: .3rem 2rem;
+  color: #333;
+  border-radius:4rem ;
+  font-size: .8rem;
+    font-weight: 600;
+  @include rtl(font-family, $font-family-base);
+  @include ltr(font-family, $font-family-arabic);
+}
+.langBtn:hover{
+  text-decoration: none;
+
+}

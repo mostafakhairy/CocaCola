@@ -1,0 +1,108 @@
+<header class="header">
+  <div class="container">
+    <div class="row">
+      <div class="col-7 py-1 ">
+        <!-- <h1 class="header-text">{{ "app.headingText" | translate }}
+          </h1> -->
+      </div>
+    </div>
+  </div>
+</header>
+<section class="sec-padding">
+  <div class="container">
+    <h2 class="heading-text">{{ "app.login" | translate }}</h2>
+  </div>
+  <div class="container py-5">
+   
+    <form #f="ngForm" class="needs-validation" novalidate>
+        <div *ngIf="commonService.error" class="invalidFeedback mb-3">
+            <i class="fas fa-exclamation-circle"></i> {{ commonService.message }}
+        </div>
+      <div class="form-row">
+        <div class="form-group col-8">
+          <label for="mNum">{{ "app.mobileNumber" | translate }}</label>
+          <input
+            type="tel"
+            class="form-control"
+            id="mNum"
+            maxlength="12"
+            placeholder="e.g. 01 xxxxxxxxx"
+            name="firstName"
+            required
+            [(ngModel)]="user.mobileNumber"
+            pattern="^0[1][0-9]{9}$"
+            #mobileNumber="ngModel"
+            [max]="11"
+          />
+          <!-- <div *ngIf="mobileNumber.invalid && mobileNumber.touched" class="invalidFeedback">
+            Please provide a valid mobile number.
+          </div> -->
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group col-8">
+          <label for="password">{{ "app.Password" | translate }}</label>
+          <input
+            type="password"
+            class="form-control"
+            id="password"
+            placeholder=""
+            name="password"
+            required
+            [(ngModel)]="user.password"
+            #password="ngModel"
+          />
+          <!-- <div *ngIf="password.invalid && password.touched" class="invalidFeedback">
+            Please provide a valid password.
+          </div> -->
+        </div>
+        <div class="form-group col-12">
+          <a
+            class="link-sm"
+            [routerLink]="['/forget-password']"
+            routerLinkActive="router-link-active"
+          >
+            {{ "app.forgottenPassword" | translate }}</a
+          >
+        </div>
+      </div>
+
+      <div class="form-group my-4">
+        <button
+          type="submit"
+          class="btn btn-primary btn-block"
+          [disabled]="f.invalid"
+          (click)="login()"
+        >
+          {{ "app.login" | translate }}
+        </button>
+      </div>
+      <div class="or">
+        <hr class="hr" />
+        <span>{{ "app.Or" | translate }}</span>
+      </div>
+      <div class="form-group my-4">
+        <button
+          class="btn btn-fb btn-block flex-center"
+          (click)="signInWithFB()"
+        >
+          <i class="fab fa-facebook mr-2 font-lg"></i>
+          {{ "app.loginWithFacebook" | translate }}
+        </button>
+      </div>
+      <!-- <div class="form-group my-4 text-center">
+        <a [routerLink]="['/register']" routerLinkActive="router-link-active">
+          {{ "app.registerWithMob" | translate }}
+        </a>
+      </div> -->
+      <div class="form-group my-4">
+        <button
+          class="btn btn-dark btn-block flex-center"
+           [routerLink]="['/register']"
+        >
+        {{ "app.registerWithMob" | translate }}
+        </button>
+      </div>
+    </form>
+  </div>
+</section>

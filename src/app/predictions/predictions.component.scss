@@ -1,0 +1,55 @@
+@import "../../scss/frameworks/bootstrap/bootstrap-user-variables";
+// @import "../../scss/frameworks/index";
+@import "../../scss/base/mixins";
+
+.prediction-date {
+  color: $medium-gray;
+  padding: 1rem 0 2rem 0;
+  text-align: center;
+  font-family: $font-family-bold;
+}
+.prediction-card {
+  background-color: $primary;
+  color: #fff;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+.prediction-row {
+  display: flex;
+  align-items: center;
+  // flex-wrap: wrap;
+  justify-content: space-evenly;
+  text-align: center;
+}
+.prediction-label {
+  padding: 0.3rem 1.2rem;
+  border-radius: 4rem;
+  margin-bottom: 0;
+  font-family: $font-family-medium;
+  text-overflow: ellipsis;
+    white-space: nowrap;
+
+}
+.input-rounded-sm {
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  border: 1px solid $border-gray;
+  text-align: center;
+  color: $dark-gray;
+  background: $light-gray;
+
+}
+.prediction-card .card-text {
+  text-align: center;
+  padding-top: 1rem;
+}
+.thumb-icon {
+  justify-content: flex-end;
+  display: flex;
+  font-size: 1.5rem;
+  padding-bottom: 0.5rem;
+}
+// .thumb-icon:hover {
+//   opacity: 0.8;
+//   cursor: pointer;
+// }

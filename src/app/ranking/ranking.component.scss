@@ -1,0 +1,130 @@
+@import "../../scss/base/fonts";
+@import "../../scss/frameworks/index";
+@import "../../scss/frameworks/bootstrap/bootstrap-user-variables";
+@import "../../scss/base/index";
+@import "../../scss/base/mixins";
+
+p {
+  margin-bottom: 0;
+}
+.drink-and-win > *,
+.drink-and-win > input,
+.drink-and-win > caption {
+  text-align: center;
+}
+.drink-and-win legend {
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+  font-family: $font-family-bold;
+  font-size: 1.2rem;
+}
+//TAPS
+.nav-pills .nav-item {
+  flex: 50%;
+  text-align: center;
+  font-family: $font-family-Italic;
+}
+.nav-pills .nav-link {
+  color: #fff;
+  background-color: $secondary;
+  padding: 1rem;
+}
+.nav-pills .nav-link.active,
+.nav-pills .show > .nav-link {
+  color: #fff;
+  background-color: $primary;
+}
+.code-notify {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  img {
+    width: 25px;
+    margin-right: 0.5rem;
+  }
+  p {
+    margin-bottom: 0;
+  }
+}
+.notify-text {
+  color: $notification-color;
+  font-family: $font-family-bold;
+}
+//RANKING=====================================
+.ranking-card {
+  background-color: #fff;
+  border: 1px solid rgba(167, 164, 164, 0);
+  box-shadow: 0 4px 8px 0 rgba(85, 68, 68, 0.2);
+  @include ltr(font-family,$font-family-bold);
+  @include rtl(font-family, $font-family-arabic-bold);
+  margin-bottom: 1rem;
+}
+.card-header,
+.card-header-friends {
+  color: #fff;
+  background: $primary;
+  text-transform: capitalize;
+  background-image: url("../../assets/images/global_opacity.png");
+  // background-position: right center;
+  background-repeat: no-repeat;
+  background-size: 50% auto;
+  padding: 1.5rem 1rem;
+  background-origin: padding-box;
+  img {
+    max-width: 100%;
+    margin-right:0.5rem;
+  }
+}
+.card-header-friends {
+  background-image: url("../../assets/images/Friends_opacity.png");
+}
+.ranking-num-row{
+  display: flex;
+  flex-wrap: wrap;
+  @include media-breakpoint-down(xs) {
+    flex-direction: column;
+
+  }
+}
+.ranking-num {
+  font-size: 1.8rem;
+  flex-basis: 50%;
+  @include media-breakpoint-down(xs) {
+  padding: 0.3rem 0;
+
+  }
+}
+.list-group-flush {
+  .ranking-list-item {
+    display: flex;
+    align-items: center;
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
+    @include media-breakpoint-down(xs) {
+      padding: 1.5rem 0.3rem;
+      flex-wrap: wrap;
+    }
+  }
+}
+.list-item-img {
+  width: 40px;
+  height: auto;
+  padding-right: 0.5rem;
+  padding-left: 0.5rem;
+}
+.winner {
+  background: url(../../assets/images/Winner.png);
+  background-size: contain;
+}
+.winner-text{
+  font-family: $font-family-bold;
+  font-size: 12px;
+  color: $primary;
+}
+.nav-pills .nav-item:last-child > .nav-link {
+  border-top-left-radius: 1rem;
+  border-bottom-left-radius: 1rem;
+  border-top-right-radius: 1rem;
+  border-bottom-right-radius: 1rem;
+  cursor: default;
+}
